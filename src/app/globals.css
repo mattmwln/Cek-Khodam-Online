@@ -1,0 +1,123 @@
+/* tailwind.css atau globals.css (disesuaikan dengan struktur proyek Anda) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@font-face {
+  font-family: 'AnotherDangerDemo';
+  src: url('/fonts/AnotherDanger-Demo.otf') format('opentype');
+  /* Tambahkan format font lain jika diperlukan */
+}
+
+body {
+  font-family: 'AnotherDangerDemo';
+}
+
+
+  .h1-with-custom-spacing {
+    position: relative;
+    font-size: 3rem; /* Default font size for desktop */
+    letter-spacing: 0.2em; /* Sesuaikan nilai sesuai kebutuhan */
+    background: linear-gradient(to right, orange,  rgb(231, 0, 0) , orange);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Membuat teks transparan agar latar belakang yang terlihat */
+  }
+  
+@media (max-width: 1024px) {
+    .h1-with-custom-spacing {
+      font-size: 2.5rem; /* Adjust font size for tablets */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .h1-with-custom-spacing {
+      font-size: 2rem; /* Adjust font size for small screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .h1-with-custom-spacing {
+      font-size: 1.5rem; /* Adjust font size for very small screens */
+      
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .h1-with-custom-spacing {
+      font-size: 1.25rem; /* Adjust font size for smallest screens */
+    }
+    .custom-responsive-div{
+      border-radius: 10px;
+      padding: 0.5rem;
+      margin: 1rem;
+    }
+    .custom-font{
+      font-size: 12px;
+    }
+  }
+  
+  
+  /* Tambahkan ini di file CSS Anda */
+  .h2-with-custom-spacing {
+    letter-spacing: 0.2em; /* Sesuaikan nilai sesuai kebutuhan */
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem; /* Ukuran font default untuk desktop */
+    background: linear-gradient(to right, rgb(231, 0, 0), orange, rgb(231, 0, 0));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Membuat teks transparan agar latar belakang yang terlihat */
+    z-index: 10;
+    padding: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    text-align: center;
+    -webkit-text-stroke: 1px white;
+    width: auto; /* Biarkan elemen menyesuaikan lebar sesuai konten */
+}
+
+@media (max-width: 1024px) {
+    .h2-with-custom-spacing {
+        font-size: 2.5rem; /* Sesuaikan ukuran font untuk tablet */
+        padding: 20px; /* Sesuaikan padding untuk tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .h2-with-custom-spacing {
+        font-size: 2rem; /* Sesuaikan ukuran font untuk layar kecil */
+        padding: 15px; /* Sesuaikan padding untuk layar kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    .h2-with-custom-spacing {
+        font-size: 1.5rem; /* Sesuaikan ukuran font untuk layar sangat kecil */
+        padding: 10px; /* Sesuaikan padding untuk layar sangat kecil */
+        top: 20%; /* Atur posisi vertikal untuk layar sangat kecil */
+        -webkit-text-stroke: 0.75px white; /* Sesuaikan stroke untuk layar sangat kecil */
+    }
+}
+
+@media (max-width: 320px) {
+    .h2-with-custom-spacing {
+        font-size: 1.25rem; /* Sesuaikan ukuran font untuk layar kecil */
+        padding: 15px; /* Sesuaikan padding untuk layar kecil */
+        top: 20%; /* Atur posisi vertikal untuk layar kecil */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sesuaikan bayangan teks untuk layar kecil */
+        -webkit-text-stroke: 0.5px white; /* Tambahkan stroke putih */
+        width: auto; /* Biarkan elemen menyesuaikan lebar sesuai konten */
+    }
+}
+
+.custom-font{
+  font-family: 'poppins';
+  
+}
+  
+
+  
