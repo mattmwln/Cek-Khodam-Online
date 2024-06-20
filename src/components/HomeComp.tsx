@@ -1,30 +1,41 @@
 "use client";
-import React, { useState, useRef, ChangeEvent, FormEvent } from "react";
-import { FaPlay, FaPause, FaStop } from "react-icons/fa"; // Import FontAwesome icons
+import React, { useState, useRef, ChangeEvent, FormEvent, useEffect } from "react";
+import { FaPlay, FaPause, FaStop } from "react-icons/fa";
 
 const HomeComp: React.FC = () => {
   const [nama, setNama] = useState<string>("");
   const [message, setMessage] = useState<string>("");
+  const [activeKhodams, setActiveKhodams] = useState<string[]>([]);
+  const [backupKhodams, setBackupKhodams] = useState<string[]>([]);
+
+  const khodams = [
+    "Buaya Darat", "Monyet Sumatera", "Kucing Hutan", "Kambing Asmodius", "Cicak Dinding",
+    "Keris Bengkok", "Paus buncit", "Harimau terbang", "Dugong Silver", "Gajah Berenang",
+    "Singa Bercelana", "Kanguru Terbang", "Kura-kura Pelari", "Anjing Bulan", "Jerapah Terbang",
+    "Komodo Nyanyi", "Koala Melompat", "Cacing Gila", "Tuyul Marah-Marah", "Mulet Senyum-Senyum",
+    "Tuyul Kebelet Pipis", "Mulet Bingung Sendiri", "Tuyul Susah Tidur", "Mulet Jalan Santai",
+    "Tuyul Suka Tidur", "Mulet Buka Salon", "Tuyul Baper", "Mulet Kena Tilang", "Setan Kepiting",
+    "Iblis Berjalan", "Hantu Terbang", "Syaitan Berenang", "Setan Tidur", "Setan Pergi Piknik",
+    "Iblis Nyanyi Dangdut", "Jin Buka Warung", "Setan Tersesat", "Hantu Main Bola",
+  ];
+
+  useEffect(() => {
+    setActiveKhodams([...khodams]);
+    setBackupKhodams([...khodams]);
+  }, []);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNama(event.target.value);
   };
 
-  const khodams = [
-    "Buaya Darat",
-    "Monyet Sumatera",
-    "Kucing Hutan",
-    "Kambing Asmodius",
-    "Cicak Dinding",
-    "Keris Bengkok",
-    "Paus buncit",
-    "Harimau terbang",
-    "Dugong Silver"
-  ];
-
   const getRandomKhodam = () => {
-    const randomIndex = Math.floor(Math.random() * khodams.length);
-    return khodams[randomIndex];
+    if (activeKhodams.length === 0) {
+      setActiveKhodams([...backupKhodams]);
+    }
+    const randomIndex = Math.floor(Math.random() * activeKhodams.length);
+    const khodam = activeKhodams[randomIndex];
+    setActiveKhodams(activeKhodams.filter((_, index) => index !== randomIndex));
+    return khodam;
   };
 
   const checkKhodam = (event: FormEvent) => {
@@ -85,32 +96,32 @@ const HomeComp: React.FC = () => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 20px; /* Jarak ke bawah teks Warning */
+            margin-bottom: 20px;
           }
 
           .play-button {
-            background-color: #4CAF50; /* Warna latar belakang bulat */
+            background-color: #4CAF50;
             border: none;
-            border-radius: 50%; /* Membuat tombol bulat */
-            padding: 20px; /* Ukuran tombol */
+            border-radius: 50%;
+            padding: 20px;
             display: inline-block;
             transition: background-color 0.3s;
             cursor: pointer;
-            margin-bottom: 10px; /* Jarak ke bawah teks berikutnya */
+            margin-bottom: 10px;
           }
 
           .play-button:hover {
-            background-color: #3e8e41; /* Warna latar belakang saat hover */
+            background-color: #3e8e41;
           }
 
           .icon {
-            color: white; /* Warna ikon */
-            font-size: 24px; /* Ukuran ikon */
+            color: white;
+            font-size: 24px;
           }
 
           @media (max-width: 320px) {
             .play-button {
-              display: none; /* Sembunyikan tombol play pada layar <= 320px */
+              display: none;
             }
           }
         `}</style>
@@ -121,10 +132,10 @@ const HomeComp: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-center h-screen">
       <div className="custom-responsive-div rounded-lg px-10 py-8 text-white mt-24"
-        style={{ 
-          background: 'rgba(255, 255, 255, 0.2)', 
-          backdropFilter: 'blur(3px)', 
-          WebkitBackdropFilter: 'blur(10px)', 
+        style={{
+          background: 'rgba(255, 255, 255, 0.2)',
+          backdropFilter: 'blur(3px)',
+          WebkitBackdropFilter: 'blur(10px)',
           borderColor: 'rgba(255, 255, 255, 0.5)',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
           borderWidth: '1px'
